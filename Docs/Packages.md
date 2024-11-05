@@ -56,5 +56,3 @@
 
 ---
 
-# Conclusion
-This document outlines the essential packages for building your Gym Application using Koa. Each package serves a specific purpose, contributing to the overall functionality and maintainability of your application. For more details on usage and advanced features, please refer to the official documentation linked above.
