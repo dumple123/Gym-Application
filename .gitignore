@@ -8,3 +8,15 @@ obj/
 # Ignore user-specific files
 *.user
 *.suo
+
+# npm packages
+node_modules/
+
+# Prisma generated files
+.prisma/
+
+# SQLite database
+*.db
+
+# Environment variables
+.env
