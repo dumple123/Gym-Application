@@ -12,3 +12,24 @@ datasource db {
   provider = "sqlite"
   url      = "file:./dev.db"
 }
+
+//Database Tables
+
+model Exercise {
+  id                Int       @id @default(autoincrement())
+  exerciseTemplateId Int       // This can link to a separate ExerciseTemplate table if needed
+  description       String?
+  sets              Int
+  reps              Int
+  weight            Float
+  boilerplate       String?
+
+  workoutSession    WorkoutSession? @relation(fields: [workoutSessionId], references: [id])
+  workoutSessionId  Int?
+}
+
+model WorkoutSession {
+  id         Int        @id @default(autoincrement())
+  name       String
+  exercises  Exercise[] // One-to-many relationship with the Exercise table
+}
