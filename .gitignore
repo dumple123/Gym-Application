@@ -17,6 +17,8 @@ node_modules/
 
 # SQLite database
 *.db
+*.db-journal
 
 # Environment variables
 .env
+
