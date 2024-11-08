@@ -30,6 +30,8 @@ model Exercise {
 
 model WorkoutSession {
   id         Int        @id @default(autoincrement())
-  workoutName       String
+  workoutName String
   exercises  Exercise[] // One-to-many relationship with the Exercise table
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
 }
