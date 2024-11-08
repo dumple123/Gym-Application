@@ -20,8 +20,7 @@ async function main() {
                 Sets: ${exercise.sets}
                 Reps: ${exercise.reps}
                 Weight: ${exercise.weight}
-                Boilerplate: ${exercise.boilerplate || 'None'}
-                Workout Session: ${exercise.workoutSession?.name || 'None'}
+                Workout Session: ${exercise.workoutSession?.workoutName || 'None'}
                 Created At: ${exercise.createdAt}
                 Updated At: ${exercise.updatedAt}
             `);
@@ -36,12 +35,7 @@ async function main() {
 
         console.log("\nWorkout Sessions:");
         workoutSessions.forEach((session) => {
-            console.log(`
-                ID: ${session.id}
-                Name: ${session.name}
-                Created At: ${session.createdAt}
-                Exercises:
-            `);
+            console.log(`\nID: ${session.id}\nName: ${session.workoutName}\nExercises:`);
 
             session.exercises.forEach((exercise) => {
                 console.log(`  - ${exercise.exerciseName} (Sets: ${exercise.sets}, Reps: ${exercise.reps}, Weight: ${exercise.weight})`);
