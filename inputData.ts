@@ -1,5 +1,3 @@
-// inputData.ts
-
 import { PrismaClient } from '@prisma/client';
 import * as readline from 'readline';
 
@@ -17,22 +15,20 @@ async function question(query: string): Promise<string> {
 async function main() {
     try {
         // Prompt user for Exercise data
-        const exerciseTemplateId = parseInt(await question("Enter Exercise Template ID: "));
+        const exerciseName = await question("Enter Exercise Name: ");
         const description = await question("Enter Exercise Description: ");
-        const sets = parseInt(await question("Enter number of Sets: "));
-        const reps = parseInt(await question("Enter number of Reps: "));
+        const sets = parseInt(await question("Enter number of Sets: "), 10);
+        const reps = parseInt(await question("Enter number of Reps: "), 10);
         const weight = parseFloat(await question("Enter Weight: "));
-        const boilerplate = await question("Enter Boilerplate (optional): ");
 
         // Save exercise data to the database
         const exercise = await prisma.exercise.create({
             data: {
-                exerciseTemplateId,
+                exerciseName,
                 description,
                 sets,
                 reps,
                 weight,
-                boilerplate: boilerplate || null,
             },
         });
 
@@ -42,11 +38,11 @@ async function main() {
         const addWorkout = (await question("Do you want to add a Workout Session? (yes/no): ")).toLowerCase();
 
         if (addWorkout === 'yes') {
-            const name = await question("Enter Workout Session Name: ");
+            const workoutName = await question("Enter Workout Session Name: ");
 
             const workoutSession = await prisma.workoutSession.create({
                 data: {
-                    name,
+                    workoutName,
                     exercises: {
                         connect: { id: exercise.id },
                     },

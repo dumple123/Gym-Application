@@ -16,20 +16,20 @@ datasource db {
 //Database Tables
 
 model Exercise {
-  id                Int       @id @default(autoincrement())
-  exerciseTemplateId Int       // This can link to a separate ExerciseTemplate table if needed
-  description       String?
-  sets              Int
-  reps              Int
-  weight            Float
-  boilerplate       String?
-
-  workoutSession    WorkoutSession? @relation(fields: [workoutSessionId], references: [id])
-  workoutSessionId  Int?
+  id               Int      @id @default(autoincrement())
+  exerciseName     String
+  description      String
+  sets             Int
+  reps             Int
+  weight           Float
+  createdAt        DateTime @default(now()) // Automatically set to current date and time
+  updatedAt        DateTime @updatedAt // Automatically updated when the record is modified
+  workoutSessionId Int?
+  workoutSession   WorkoutSession? @relation(fields: [workoutSessionId], references: [id])
 }
 
 model WorkoutSession {
   id         Int        @id @default(autoincrement())
-  name       String
+  workoutName       String
   exercises  Exercise[] // One-to-many relationship with the Exercise table
 }
