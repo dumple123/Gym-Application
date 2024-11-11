@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "es2016",                                      /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
+    "module": "commonjs",                                      /* Specify what module code is generated. CommonJS is used for Node.js projects. */
+    "esModuleInterop": true,                                   /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables compatibility for 'import' and 'require' statements. */
+    "forceConsistentCasingInFileNames": true,                  /* Ensure that casing is consistent in imports, preventing issues on case-sensitive file systems. */
+    "strict": true,                                            /* Enable all strict type-checking options for better type safety. */
+    "skipLibCheck": true,                                      /* Skip type checking all `.d.ts` files to improve performance. */
+    "types": ["node"]                                          /* Include Node.js types so that TypeScript can understand Node-specific objects like 'require' and 'process'. */
+  },
+  "include": ["**/*.ts"],                                       /* Include all TypeScript files in the backend folder to be compiled. */
+  "exclude": ["node_modules"]                                   /* Exclude 'node_modules' directory from compilation as it contains external dependencies. */
+}

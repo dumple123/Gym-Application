@@ -1,0 +1,37 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+//Database Tables
+
+model Exercise {
+  id               Int      @id @default(autoincrement())
+  exerciseName     String
+  description      String
+  sets             Int
+  reps             Int
+  weight           Float
+  createdAt        DateTime @default(now()) // Automatically set to current date and time
+  updatedAt        DateTime @updatedAt // Automatically updated when the record is modified
+  workoutSessionId Int?
+  workoutSession   WorkoutSession? @relation(fields: [workoutSessionId], references: [id])
+}
+
+model WorkoutSession {
+  id         Int        @id @default(autoincrement())
+  workoutName String
+  exercises  Exercise[] // One-to-many relationship with the Exercise table
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+}
