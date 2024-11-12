@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+      "target": "es2016",                       // Set the JavaScript version
+      "module": "commonjs",                     // Default to CommonJS, can be overridden in frontend if needed
+      "esModuleInterop": true,                  // Enable compatibility with CommonJS and ES6 module systems
+      "forceConsistentCasingInFileNames": true, // Enforce consistent casing in imports
+      "strict": true,                           // Enable all strict type-checking options
+      "skipLibCheck": true                      // Skip type checking `.d.ts` files for faster builds
+    },
+    "include": ["**/*.ts"],
+    "exclude": ["node_modules"]
+  }
+  
