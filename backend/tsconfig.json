@@ -1,10 +1,19 @@
-// backend/tsconfig.json
 {
-  "extends": "../tsconfig.json",
   "compilerOptions": {
-    "module": "commonjs", // Backend-specific module system
-    "types": ["node"]     // Include Node.js types for backend usage
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true
   },
-  "include": ["**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "./**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
