@@ -1,16 +1,22 @@
-import express, { Request, Response } from 'express';  // Import express and types
-import { PrismaClient } from '@prisma/client';         // Import the PrismaClient
+import express from 'express';
+import cors from 'cors'; // Import CORS
+import { PrismaClient } from '@prisma/client';
+import exerciseRoutes from './routes/exercise';
 
 const app = express();
-const prisma = new PrismaClient();                    // Initialize Prisma Client
+const prisma = new PrismaClient();
+
+// Configure CORS to allow requests from your frontend
+app.use(cors({
+  origin: 'http://localhost:8081'  // Replace with the frontend origin
+}));
 
 app.use(express.json());
 
-app.get('/exercises', async (req: Request, res: Response) => {  // Add types for req and res
-  const exercises = await prisma.exercise.findMany();  // Use prisma client to fetch data
-  res.json(exercises);  // Send the fetched exercises as a JSON response
-});
+// Integrate the exercise routes
+app.use('/api', exerciseRoutes);  // All routes in exercise.ts will now be prefixed with /api
 
+// Start the server
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
