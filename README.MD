@@ -1,132 +1,102 @@
-# Gym Progress Tracking Application
+Gym Progress Tracking Application
+=================================
 
-## Prerequisites
+This application allows users to track their gym progress using a React Native frontend (Expo) and a Node.js backend with SQLite for storage.
 
-Before you begin, ensure you have the following installed:
+Prerequisites
+-------------
 
-- **Node.js** (version 16 or higher)
-- **npm** or **yarn**
-- **SQLite** (for backend, though Prisma will manage the database)
-- **Expo CLI** (for frontend development)
+Ensure you have the following installed:
 
-## Setup Instructions
+-   **Node.js** (version 16 or higher)
+-   **npm** or **yarn**
+-   **SQLite** (for backend, Prisma will manage the database)
+-   **Expo CLI** (for frontend development)
 
-### 1. **Clone the Repository**
+Setup Instructions
+------------------
 
-Clone the repository to your local machine and navigate to the project directory:
+### 1\. **Clone the Repository**
 
-- `git clone <your-repository-url>`
-- `cd Gym-Application`
+Clone the repository and navigate to the project directory:
 
-### 2. **Set Up the Backend**
+`git clone <your-repository-url>`
 
-1. **Navigate to the backend directory:**
+`cd Gym-Application`
 
-   In your terminal, go to the `backend` folder:
+### 2\. **Install Dependencies**
 
-   - `cd backend`
+In the root directory, install all dependencies for both the backend and frontend:
 
-2. **Install Dependencies:**
+Using npm:
 
-   Use npm or yarn to install the backend dependencies:
+`npm install`
 
-   - Using npm:
-     - `npm install`
-   - Using yarn:
-     - `yarn install`
+Using yarn:
 
-3. **Set Up the Database:**
+`yarn install`
 
-   Prisma will generate the database based on the schema. Run the following command to set up the SQLite database:
+### 3\. **Configure Environment Variables**
 
-   - `npx prisma migrate dev --name init`
+Create a `.env` file in the root directory to store sensitive environment variables. Below are example entries for both backend and frontend:
 
-4. **Run the Backend Server:**
+-   **Backend configuration**:
 
-   Start the backend server:
+    `DATABASE_URL="file:./backend/prisma/dev.db"`
 
-   - `npx ts-node index.ts`
+-   **Frontend configuration**:
 
-   The server will run at `http://localhost:3000`.
+    `API_URL="http://localhost:3000"`
 
----
+### 4\. **Set Up the Database**
 
-### 3. **Set Up the Frontend**
+Prisma will handle the database setup based on the schema. Run the following command to initialize the SQLite database:
 
-1. **Navigate to the frontend directory:**
+`npx prisma migrate dev --name init`
 
-   In your terminal, go to the `frontend` folder:
+### 5\. **Running the Application**
 
-   - `cd frontend`
+To start both the backend and frontend servers:
 
-2. **Install Dependencies:**
+#### Backend:
 
-   Use npm or yarn to install the frontend dependencies:
+1.  Start the backend server by running:
 
-   - Using npm:
-     - `npm install`
-   - Using yarn:
-     - `yarn install`
+    `npm run backend`
 
-3. **Start the Expo Development Server:**
+    The backend server will run on `http://localhost:3000`.
 
-   Start the Expo project with the following command:
+#### Frontend:
 
-   - `npx expo start`
+1.  Start the Expo development server:
 
-   This will open the Expo developer tools in your browser. You can scan the QR code to run the app on your mobile device, or you can use the web browser for testing.
+    `npm run frontend`
 
----
+    This opens Expo's developer tools. You can scan the QR code to run the app on your mobile device or use a web browser for testing.
 
-### 4. **Environment Configuration (Optional)**
+### 6\. **Testing the Application**
 
-If your project requires environment variables (e.g., API keys), create a `.env` file in both the `backend` and `frontend` directories. Make sure to add any sensitive data you may need, such as:
+#### Backend Tests:
 
-- In the backend, add database configurations in `.env`.
-- In the frontend, add any API keys or URLs you may need to access.
+Run backend tests (if available):
 
-Example for `.env` in the **backend**:
+`npm run test-backend`
 
-- `DATABASE_URL="file:./dev.db"`
+#### Frontend Tests:
 
-Example for `.env` in the **frontend**:
+Run frontend tests (if available):
 
-- `API_URL="http://localhost:3000"`
+`npm run test-frontend`
 
----
+### 7\. **Stopping the Servers**
 
-### 5. **Test the Application**
+To stop the backend and frontend servers, press `Ctrl+C` in the respective terminal sessions.
 
-Once both servers are running, you should be able to:
+Troubleshooting
+---------------
 
-- Access the backend API at `http://localhost:3000`
-- Use the Expo app (either on mobile or web) to interact with the frontend
+-   **Database Issues**: Ensure the `.env` file is properly configured, and that the `prisma migrate` command has run successfully.
 
----
+-   **Expo Issues**: Clear Expo's cache with:
 
-### 6. **Running Tests (If Applicable)**
-
-If you have any tests set up for the backend or frontend, you can run them with the following commands:
-
-For backend tests (assuming you're using Jest or another testing framework):
-
-- `npm test`
-
-For frontend tests (if you’re using Jest or React Native Testing Library):
-
-- `npm test`
-
----
-
-### 7. **Stopping the Server**
-
-To stop both the frontend and backend servers:
-
-- Press `Ctrl+C` in the terminal where the backend or frontend server is running.
-
----
-
-## Troubleshooting
-
-- If you encounter issues with the SQLite database, ensure that the `.env` file is properly set up and the `prisma migrate` command ran successfully.
-- If you see issues with the Expo app, try clearing the cache with `npx expo start -c`.
+    `npx expo start -c`
