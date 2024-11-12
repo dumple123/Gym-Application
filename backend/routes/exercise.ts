@@ -44,4 +44,19 @@ router.post('/exercises', async (req: Request, res: Response) => {
   }
 });
 
+// Add this GET route to retrieve all exercises
+router.get('/exercises', async (req: Request, res: Response) => {
+    try {
+      const exercises = await prisma.exercise.findMany({
+        include: {
+          workoutSession: true, // Optionally include related workout session details
+        },
+      });
+      res.json(exercises);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Error fetching exercises' });
+    }
+});
+
 export default router;
