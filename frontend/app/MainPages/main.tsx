@@ -1,8 +1,8 @@
 // C:\Users\72065\Desktop\Gym-Application\frontend\app\MainPages\main.tsx
 import React from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
-import ExerciseForm from '@/components/ExerciseForm'; // Adjust the import path if necessary
-import ExerciseList from '@/components/ExerciseDisplay';
+import ExerciseForm from '../../components/ExerciseForm'; 
+import ExerciseList from '../../components/ExerciseDisplay';
 
 const MainScreen = () => {
   return (

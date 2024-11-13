@@ -1,8 +1,8 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import AuthLayout from '@/app/Auth/_layout';
-import MainPagesLayout from 'C:\Users\72065\Desktop\Gym-Application\frontend\app\MainPages\_layout';
+import AuthLayout from './Auth/_layout';
+import MainPagesLayout from './MainPages/_layout';
 
 const Stack = createStackNavigator();
 
