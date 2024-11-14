@@ -26,7 +26,7 @@ Clone the repository and navigate to the project directory:
 
 ### 2\. **Install Dependencies**
 
-In the root directory, install all dependencies for both the backend and frontend:
+install all dependencies for both the backend and frontend:
 
 Using npm:
 
@@ -38,7 +38,7 @@ Using yarn:
 
 ### 3\. **Configure Environment Variables**
 
-Create a `.env` file in the root directory to store sensitive environment variables. Below are example entries for both backend and frontend:
+edit a `.envtemplate` file in each directory to store sensitive environment variables. Below are example entries for both backend and frontend:
 
 -   **Backend configuration**:
 
@@ -62,7 +62,7 @@ To start both the backend and frontend servers:
 
 1.  Start the backend server by running:
 
-    `npm run backend`
+    `npx ts-node index.ts`
 
     The backend server will run on `http://localhost:3000`.
 
@@ -70,25 +70,11 @@ To start both the backend and frontend servers:
 
 1.  Start the Expo development server:
 
-    `npm run frontend`
+    `npx expo`
 
     This opens Expo's developer tools. You can scan the QR code to run the app on your mobile device or use a web browser for testing.
 
-### 6\. **Testing the Application**
-
-#### Backend Tests:
-
-Run backend tests (if available):
-
-`npm run test-backend`
-
-#### Frontend Tests:
-
-Run frontend tests (if available):
-
-`npm run test-frontend`
-
-### 7\. **Stopping the Servers**
+### 6\. **Stopping the Servers**
 
 To stop the backend and frontend servers, press `Ctrl+C` in the respective terminal sessions.
 
