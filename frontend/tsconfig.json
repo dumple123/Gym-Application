@@ -1,14 +1,25 @@
 {
-  "extends": "C:/Users/72065/Desktop/Gym-Application/tsconfig.json",  // absalute path
+  "extends": "C:/Users/72065/Desktop/Gym-Application/tsconfig.json",
   "compilerOptions": {
     "module": "esnext",
     "jsx": "react",
-    "types": ["react"],
+    "types": [
+      "react"
+    ],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["app/*"]
+      "@/*": [
+        "app/*"
+      ]
     }
   },
-  "include": ["**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    ".expo/types/**/*.ts",
+    "expo-env.d.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

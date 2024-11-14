@@ -1,84 +1,24 @@
 {
   "name": "my-app",
   "version": "1.0.0",
-  "main": "backend/index.ts",
-  "type": "module",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
   "scripts": {
-    "backend:test": "echo \"Error: no test specified\" && exit 1",
-    "frontend:start": "expo start",
-    "frontend:reset-project": "node ./scripts/reset-project.js",
-    "frontend:android": "expo start --android",
-    "frontend:ios": "expo start --ios",
-    "frontend:web": "expo start --web",
-    "frontend:test": "jest --watchAll",
-    "frontend:lint": "expo lint",
-    "start": "concurrently \"npm run frontend:start\" \"npx backend/index\""
-  },
-  "dependencies": {
-    "@expo/vector-icons": "^14.0.2",
-    "@prisma/client": "^5.22.0",
-    "@react-navigation/bottom-tabs": "^7.0.0",
-    "@react-navigation/native": "^7.0.0",
-    "@react-navigation/stack": "6.3.14",
-    "@types/react": "18.3.12",
-    "axios": "^1.7.7",
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
-    "expo": "52.0.4",
-    "expo-constants": "17.0.2",
-    "expo-font": "13.0.1",
-    "expo-linking": "7.0.2",
-    "expo-router": "4.0.2",
-    "expo-splash-screen": "0.29.7",
-    "expo-status-bar": "2.0.0",
-    "expo-system-ui": "4.0.2",
-    "expo-web-browser": "14.0.0",
-    "express": "^4.21.1",
-    "jest-expo": "52.0.0",
-    "metro": "^0.81.0",
-    "prisma": "^5.22.0",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
-    "react-native": "0.76.1",
-    "react-native-gesture-handler": "2.20.2",
-    "react-native-reanimated": "3.16.1",
-    "react-native-safe-area-context": "4.12.0",
-    "react-native-screens": "^4.0.0",
-    "react-native-web": "~0.19.10",
-    "sqlite3": "^5.1.7",
-    "tsx": "^4.19.2"
+    "frontend:start": "npm --prefix frontend run start",
+    "backend:start": "npm --prefix backend run start",
+    "start": "concurrently \"npm run frontend:start\" \"npm run backend:start\"",
+    "frontend:test": "npm --prefix frontend run test",
+    "backend:test": "npm --prefix backend run test"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0",
-    "@types/cors": "^2.8.17",
-    "@types/express": "^5.0.0",
-    "@types/jest": "^29.5.12",
-    "@types/node": "^22.9.0",
-    "@types/react": "~18.2.45",
-    "@types/react-test-renderer": "^18.0.7",
     "concurrently": "^9.1.0",
-    "jest": "^29.2.1",
-    "jest-expo": "~51.0.3",
-    "react-test-renderer": "18.2.0",
-    "ts-node": "^10.9.2",
-    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.6.3"
   },
-  "jest": {
-    "preset": "jest-expo"
-  },
-  "private": true,
-  "ts-node": {
-    "compilerOptions": {
-      "module": "ESNext",
-      "moduleResolution": "node",
-      "esModuleInterop": true,
-      "allowJs": true,
-      "skipLibCheck": true,
-      "strict": true
-    },
-    "require": [
-      "tsconfig-paths/register"
-    ]
+  "dependencies": {
+    "glob": "^9.3.5",
+    "rimraf": "^4.4.1"
   }
 }

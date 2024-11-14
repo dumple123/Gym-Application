@@ -7,10 +7,10 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true,
-    "baseUrl": "./", // Add baseUrl
+    "baseUrl": "./",
     "paths": {
-      "@/components/*": ["frontend/components/*"], // Add this alias
-      "@/utils/*": ["frontend/utils/*"] // Optional: add other paths as needed
+      "@/components/*": ["frontend/components/*"],
+      "@/utils/*": ["frontend/utils/*"]
     }
   },
   "include": [
@@ -19,6 +19,5 @@
   ],
   "exclude": [
     "node_modules"
-  ],
-  "extends": "expo/tsconfig.base"
+  ]
 }
