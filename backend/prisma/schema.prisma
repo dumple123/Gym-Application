@@ -15,23 +15,40 @@ datasource db {
 
 //Database Tables
 
+model User {
+  id               Int               @id @default(autoincrement())
+  email            String            @unique
+  username         String
+  password         String            // Store hashed passwords
+  isAdmin          Boolean           @default(false) // Flag to identify admin users
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+  workoutSessions  WorkoutSession[]  // One-to-many relationship with WorkoutSession
+  exercises        Exercise[]        // One-to-many relationship with Exercise
+}
+
 model Exercise {
-  id               Int      @id @default(autoincrement())
+  id               Int               @id @default(autoincrement())
   exerciseName     String
   description      String
   sets             Int
   reps             Int
   weight           Float
-  createdAt        DateTime @default(now()) // Automatically set to current date and time
-  updatedAt        DateTime @updatedAt // Automatically updated when the record is modified
+  isAdminCreated   Boolean           @default(false) // Flag to indicate admin-created exercises
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
   workoutSessionId Int?
-  workoutSession   WorkoutSession? @relation(fields: [workoutSessionId], references: [id])
+  workoutSession   WorkoutSession?   @relation(fields: [workoutSessionId], references: [id])
+  userId           Int?              // Foreign key to relate to User
+  user             User?             @relation(fields: [userId], references: [id])
 }
 
 model WorkoutSession {
-  id         Int        @id @default(autoincrement())
-  workoutName String
-  exercises  Exercise[] // One-to-many relationship with the Exercise table
-  createdAt  DateTime   @default(now())
-  updatedAt  DateTime   @updatedAt
+  id              Int         @id @default(autoincrement())
+  workoutName     String
+  exercises       Exercise[]  // One-to-many relationship with Exercise
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+  userId          Int?        // Foreign key to relate to User
+  user            User?       @relation(fields: [userId], references: [id])
 }

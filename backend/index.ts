@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors'; // Import CORS
 import { PrismaClient } from '@prisma/client';
 import exerciseRoutes from './routes/exercise';
+import registerRoutes from './routes/register';
 
 const app = express();
 const prisma = new PrismaClient();
@@ -15,6 +16,9 @@ app.use(express.json());
 
 // Integrate the exercise routes
 app.use('/api', exerciseRoutes);  // All routes in exercise.ts will now be prefixed with /api
+
+// Register route
+app.use('/api', registerRoutes);
 
 // Start the server
 const port = process.env.PORT || 3000;
